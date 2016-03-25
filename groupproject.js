@@ -1,10 +1,33 @@
+//Group Project STI created with Libby, Amy, Sasha & Cari
 
-var atticus = ["Atticus", "2405", "47000", 3];
-var jem = ["Jem", "62347", "63500", 4];
-var boo = ["Boo", "11435", "54000", 3];
-var scout = ["Scout", "6243", "74750", 5];
+var atticus = {
+  name: "Atticus",
+  employeeNumber: "2405",
+  salary: "47000",
+  rating: 3
+};
+var jem = {
+  name: "Jem",
+  employeeNumber: "62347",
+  salary: "63500",
+  rating: 4
+};
+var boo = {
+  name: "Boo",
+  employeeNumber: "11435",
+  salary: "54000",
+  rating: 3
+};
+var scout = {
+  name: "Scout",
+  employeeNumber: "6243",
+  salary: "74750",
+  raing: 5
+};
 
 var employees = [atticus, jem, boo, scout];
+
+
 
 // new array [name,%, total comp, total bonus]  just for our reference!!
 
@@ -14,15 +37,17 @@ var employees = [atticus, jem, boo, scout];
 // console.log("Jem", generating(jem));
 // console.log("Boo", generating(boo));
 
+
 for ( var i = 0; i < employees.length; i++) {
   console.log(generating(employees[i]));
 }
 
+
 function calcBonus(person) {
-  var name = person[0];
-  var employeeNumber = person[1];
-  var salary = parseInt(person[2]);
-  var rating=person[3];
+  var name = person.name;
+  var employeeNumber = person.employeeNumber;
+  var salary = parseInt(person.salary);
+  var rating=person.rating;
 
   var bonusPercent=0;
 
@@ -58,15 +83,29 @@ function calcBonus(person) {
 //console.log(calcBonus(atticus));
 
 function generating(person){
-  var salary=parseInt(person[2]);
+  var salary=parseInt(person.salary);
   var bonusPercent=calcBonus(person);
   var totalBonus=Math.round(bonusPercent * salary);
   var totalComp=totalBonus + salary;
-  var newArray=[];
 
+  var employee = {};
+
+  employee.name = person.name;
+  employee.bonusPercent = bonusPercent;
+  employee.totalBonus = totalBonus;
+  employee.totalComp = totalBonus;
+
+  return employee;
+
+}
+
+
+
+
+/* former array code before converting to objects
   newArray.push(person[0]);
   newArray.push(bonusPercent);
   newArray.push(totalComp);
   newArray.push(totalBonus);
   return newArray;
-}
+  */
